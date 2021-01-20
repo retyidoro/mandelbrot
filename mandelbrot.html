@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <canvas id="mandelbrot"> </canvas>
+  <h1>Zoomable Mandelbrot set</h1>
+  <p>The Mandelbrot set is a set of complex numbers</p>
+
+  <script>
+    //https://progur.com/2017/02/create-mandelbrot-fractal-javascript.html
+    let canvas = document.getElementById("mandelbrot");
+    canvas.width = 700;
+    canvas.height = 600;
+    let ctx = canvas.getContext("2d");
+
+    function checkIfMandelbrotPoint(x, y) {
+      let realCompRes = x;
+      let imgCompRes = y;
+      let maxIterations = 100;
+
+      for (let i = 0 ; i < maxIterations; ++i) {
+        //calculate real and img parts
+        let tempRealComp = realCompRes * realCompRes - imgCompRes * imgCompRes + x;
+        let tempImgComp = 2 * realCompRes * imgCompRes + y;
+
+        realCompRes = tempRealComp;
+        imgCompRes = tempImgComp;
+
+        if (realCompRes * imgCompRes > 5) {
+          return (i / maxIterations * 100);
+        }
+      }      
+      return 0;
+    }
+		
+    let magnificationFactor = 2900;
+    panX = 0.6;
+    panY = 0.7;
+
+    for (let x = 0; x < canvas.width; ++x) {
+      for (let y = 0; y < canvas.height; ++y) {
+        let belongsToSet = checkIfMandelbrotPoint(x/magnificationFactor - panX, y/magnificationFactor - panY);
+	//console.log(belongsToSet);
+        if (belongsToSet == 0) {
+          ctx.fillStyle = '#000';
+          ctx.fillRect(x, y, 1, 1); // draw black pixel
+        }
+        else {
+          ctx.fillStyle = `hsl(0, 100%, ${ belongsToSet }%)`;
+          ctx.fillRect(x, y, 1, 1); //draw color pixel
+        }
+      }
+    }
+		
+    
+    
+
+  </script>
+</body>
+</html>
