@@ -1,0 +1,27 @@
+#navigate {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#updown {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.arrow {
+  cursor: pointer;
+  padding: 16px;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-270 {
+  transform: rotate(270deg);
+}

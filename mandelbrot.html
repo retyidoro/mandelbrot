@@ -3,43 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Zoomable Mandelbrot</title>
-
+    <link rel="stylesheet" href="style.css">
     <!-- using Vue -->
     <script src="https://unpkg.com/vue"></script>
-    <style>
-      #navigate {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      #updown {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .arrow {
-        background-color: rgb(97, 97, 97);
-        cursor: pointer
-      }
-      #right {
-        width: 20px;
-        height: 50px;
-      }
-      #left {
-        width: 20px;
-        height: 50px;
-      }
-      #up {
-        width: 50px;
-        height: 20px;
-      }
-      #down {
-        width: 50px;
-        height: 20px;
-      }
-      
-    </style>
   </head>
 <body>
   <header>
@@ -48,20 +14,36 @@
   </header>
   <section id="app">
     <p>{{title}}</p>
+
     <div class="slidecontainer">
+      <label>zoom</label>
       <input type="range" min="10000" max="100000" value="10000"
        class="slider" id="myRange" v-model="magniFactor"
         @change="drawMandelbrot">
     </div>
+
+    <div>
+      <label>hue</label>
+      <input type="range" min="0" max="359" value="289"
+      v-model="hue" @change="drawMandelbrot">
+    </div>
+
+    <div>
+      <label>lightness</label>
+      <input type="range" min="1" max="5" value="1"
+      v-model="lightness" @change="drawMandelbrot">
+    </div>
+
     <div id="updown">
-    <div class="arrow" id="up" v-on:click="go('up')"></div>
+      <img src="icons/chevron.svg"v-on:click="go('up')" class="arrow rotate-180"/>
     <div id="navigate">
-      <div class="arrow" id="left" v-on:click="go('left')"></div>
+      <img src="icons/chevron.svg" v-on:click="go('left')" class="arrow rotate-90"/>
       <canvas id="mandelbrot"> </canvas>
-      <div class="arrow" id="right" v-on:click="go('right')"></div>
+      <img src="icons/chevron.svg" v-on:click="go('right')" class="arrow rotate-270"/>
     </div>
-    <div class="arrow" id="down" v-on:click="go('down')"></div>
+      <img src="icons/chevron.svg" v-on:click="go('down')" class="arrow"/>
     </div>
+
     </section>
   <script src="mandelbrot.js"></script>
 </body>

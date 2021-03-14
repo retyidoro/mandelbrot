@@ -5,6 +5,8 @@ let app = new Vue({
     width: 1200,
     height: 750,
     magniFactor: 10000,
+    hue: 289,
+    lightness: 1,
     panX: 0.6,
     panY: 0.7,
     ctx: ""
@@ -58,7 +60,6 @@ let app = new Vue({
       return 0;
     },
     drawMandelbrot() {
-      console.log("change")
       for (let x = 0; x < this.width; ++x) {
         for (let y = 0; y < this.height; ++y) {
           let belongsToSet = this.checkIfMandelbrotPoint(x/this.magniFactor - this.panX, y/this.magniFactor - this.panY);
@@ -68,7 +69,7 @@ let app = new Vue({
             this.ctx.fillRect(x, y, 1, 1); // draw black pixel
           }
           else {
-            this.ctx.fillStyle = `hsl(0, 100%, ${ belongsToSet }%)`;
+            this.ctx.fillStyle = `hsl(${belongsToSet + parseInt(this.hue)}, 100%, ${ belongsToSet*this.lightness }%)`;
             this.ctx.fillRect(x, y, 1, 1); //draw color pixel
           }
         }
