@@ -7,6 +7,7 @@ let app = new Vue({
     magniFactor: 10000,
     hue: 289,
     lightness: 1,
+    maxit: 100,
     panX: 0.6,
     panY: 0.7,
     ctx: ""
@@ -43,7 +44,7 @@ let app = new Vue({
     checkIfMandelbrotPoint(x, y) {
       let realCompRes = x;
       let imgCompRes = y;
-      let maxIterations = 100;
+      let maxIterations = this.maxit;
 
       for (let i = 0 ; i < maxIterations; ++i) {
         //calculate real and img parts
@@ -74,6 +75,15 @@ let app = new Vue({
           }
         }
       }
+    },
+    reset() {
+      this.magniFactor = 10000,
+      this.hue = 289,
+      this.lightness = 1,
+      this.panX = 0.6,
+      this.panY = 0.7
+
+      this.drawMandelbrot()
     }
   }
 })
