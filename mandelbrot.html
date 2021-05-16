@@ -34,6 +34,16 @@
       v-model="lightness" @change="drawMandelbrot">
     </div>
 
+    <div>
+      <label>max iterations</label>
+      <input type="range" min="10" max="200" value="100"
+      v-model="maxit" @change="drawMandelbrot">
+    </div>
+
+    <button @click="reset">
+      Reset
+    </button>
+
     <div id="updown">
       <img src="icons/chevron.svg"v-on:click="go('up')" class="arrow rotate-180"/>
     <div id="navigate">
