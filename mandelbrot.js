@@ -1,7 +1,7 @@
 let app = new Vue({
   el: "#app",
   data: {
-    title: "hey",
+    title: "Isti",
     width: 1200,
     height: 750,
     magniFactor: 10000,
@@ -14,7 +14,6 @@ let app = new Vue({
   },
 
   //this happens when the page loads
-  //serios???
   mounted() {
     console.log("mount");
     let canvas = document.getElementById("mandelbrot");
@@ -25,6 +24,7 @@ let app = new Vue({
   },
 
   methods: {
+    // here I think we should step based on magnifactor
     go(direction) {
       if (direction === "left") {
         this.panX += 0.01;

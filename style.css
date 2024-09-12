@@ -25,3 +25,14 @@
 .rotate-270 {
   transform: rotate(270deg);
 }
+
+.slider-container {
+  width: 250px;
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+}
+
+button {
+  margin: 8px;
+}
