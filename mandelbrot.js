@@ -1,7 +1,7 @@
 let app = new Vue({
   el: "#app",
   data: {
-    title: "Isti",
+    title: "hello there!",
     width: 1200,
     height: 750,
     magniFactor: 10000,
