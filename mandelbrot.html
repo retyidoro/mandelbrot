@@ -1,60 +1,94 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Zoomable Mandelbrot</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- using Vue -->
     <script src="https://unpkg.com/vue"></script>
   </head>
-<body>
-  <header>
-    <h1>Zoomable Mandelbrot set</h1>
-    <p>The Mandelbrot set is a set of complex numbers</p>
-  </header>
-  <section id="app">
-    <p>{{title}}</p>
+  <body>
+    <header>
+      <h1>Zoomable Mandelbrot set</h1>
+      <p>The Mandelbrot set is a set of complex numbers</p>
+    </header>
+    <section id="app">
+      <p>Istvanka legyszi segits helrehozni a mandelbrotomat :((</p>
 
-    <div class="slidecontainer">
-      <label>zoom</label>
-      <input type="range" min="10000" max="100000" value="10000"
-       class="slider" id="myRange" v-model="magniFactor"
-        @change="drawMandelbrot">
-    </div>
+      <div class="slidecontainer">
+        <label>zoom</label>
+        <input
+          type="range"
+          min="10000"
+          max="100000"
+          value="10000"
+          class="slider"
+          id="myRange"
+          v-model="magniFactor"
+          @change="drawMandelbrot"
+        />
+      </div>
 
-    <div>
-      <label>hue</label>
-      <input type="range" min="0" max="359" value="289"
-      v-model="hue" @change="drawMandelbrot">
-    </div>
+      <div>
+        <label>hue</label>
+        <input
+          type="range"
+          min="0"
+          max="359"
+          value="289"
+          v-model="hue"
+          @change="drawMandelbrot"
+        />
+      </div>
 
-    <div>
-      <label>lightness</label>
-      <input type="range" min="1" max="5" value="1"
-      v-model="lightness" @change="drawMandelbrot">
-    </div>
+      <div>
+        <label>lightness</label>
+        <input
+          type="range"
+          min="1"
+          max="5"
+          value="1"
+          v-model="lightness"
+          @change="drawMandelbrot"
+        />
+      </div>
 
-    <div>
-      <label>max iterations</label>
-      <input type="range" min="10" max="200" value="100"
-      v-model="maxit" @change="drawMandelbrot">
-    </div>
+      <div>
+        <label>max iterations</label>
+        <input
+          type="range"
+          min="10"
+          max="200"
+          value="100"
+          v-model="maxit"
+          @change="drawMandelbrot"
+        />
+      </div>
 
-    <button @click="reset">
-      Reset
-    </button>
+      <button @click="reset">Reset</button>
 
-    <div id="updown">
-      <img src="icons/chevron.svg"v-on:click="go('up')" class="arrow rotate-180"/>
-    <div id="navigate">
-      <img src="icons/chevron.svg" v-on:click="go('left')" class="arrow rotate-90"/>
-      <canvas id="mandelbrot"> </canvas>
-      <img src="icons/chevron.svg" v-on:click="go('right')" class="arrow rotate-270"/>
-    </div>
-      <img src="icons/chevron.svg" v-on:click="go('down')" class="arrow"/>
-    </div>
-
+      <div id="updown">
+        <img
+          src="icons/chevron.svg"
+          v-on:click="go('up')"
+          class="arrow rotate-180"
+        />
+        <div id="navigate">
+          <img
+            src="icons/chevron.svg"
+            v-on:click="go('left')"
+            class="arrow rotate-90"
+          />
+          <canvas id="mandelbrot"> </canvas>
+          <img
+            src="icons/chevron.svg"
+            v-on:click="go('right')"
+            class="arrow rotate-270"
+          />
+        </div>
+        <img src="icons/chevron.svg" v-on:click="go('down')" class="arrow" />
+      </div>
     </section>
-  <script src="mandelbrot.js"></script>
-</body>
+    <script src="mandelbrot.js"></script>
+  </body>
 </html>
