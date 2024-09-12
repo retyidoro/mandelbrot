@@ -1,2 +1,3 @@
 # mandelbrot
-Zoomable mandelbrot fractal
+
+Zoomable mandelbrot fractal with some great tool
